@@ -1,50 +1,84 @@
 # commercial-legal-jp-extension
 
-Claude for Legal の **Commercial Legal** プラグインに重ねて使う、**日本法の契約レビュー向け検証拡張**です(非公式。Anthropic とは無関係)。
-Commercial Legal 本体は改変せず、後段で「法的判断の検証」と「Word 変更履歴の検証」を行います。
+[日本語 / Japanese](README.ja.md)
 
-> **重要:** 本ツールは法的助言ではありません。出力は機械的な整合確認と AI による検討結果であり、法的正確性を保証しません。契約の締結・送付・最終的な法的判断は、必ず人間(弁護士・法務担当者)が行ってください。
+An unofficial **verification extension for Japanese-law contract review**, designed to complement the **Commercial Legal** plugin in Claude for Legal. This project is not affiliated with Anthropic.
 
-## できること
-- 契約書原文・事実関係・法令の一次資料に基づく初回レビュー(`review.json`)の機械検証(引用照合、条番号、数値、適用要件)
-- 結論を伏せた独立再検証、不一致の分類(客観/解釈/取引判断)、反証レビュー
-- 修正案の分類(検証済みの修正 / 交渉上の提案 / 確認事項 / 反映禁止)と、条件を満たすものだけの Word 変更履歴・コメント反映
-- Word の整合検証(変更履歴・コメント件数、本文の差分が意図した範囲に限られるか)
-- 法律知識基盤(SQLite FTS5 + TF-IDF の検索、台帳のハッシュ連鎖、MCP サーバ)
+It leaves the Commercial Legal plugin unchanged and adds downstream verification of legal assessments and Word tracked changes.
 
-## 構成
-| ディレクトリ | 内容 |
+> **Important:** This tool does not provide legal advice. Its outputs are mechanical consistency checks and AI-generated assessments, with no guarantee of legal accuracy. A human lawyer or legal professional must make the final legal decisions and approve the execution or delivery of contracts.
+
+## Features
+
+- Mechanically validate an initial contract review (`review.json`) against the original contract, facts, and primary legal sources: quotations, article numbers, numerical values, and applicability requirements.
+- Run independent verification with the initial conclusions withheld, classify disagreements as factual, interpretive, or business decisions, and conduct adversarial review.
+- Classify proposed revisions as verified changes, negotiation proposals, questions requiring confirmation, or prohibited changes; apply only eligible revisions as Word tracked changes and comments.
+- Check Word consistency, including tracked-change and comment counts and whether body-text differences stay within the intended scope.
+- Maintain a legal knowledge base with SQLite FTS5 and TF-IDF search, a hash-chained ledger, and an MCP server.
+
+## Repository structure
+
+| Directory | Contents |
 |---|---|
-| `scripts/` | ゲート・検証・Word 反映・知識基盤のスクリプト(Python 標準ライブラリ中心。`python3 -I` で実行) |
-| `agents/`, `skills/` | 独立再検証・反証レビュー用エージェント定義、レビュー手順スキル |
-| `schemas/`, `specs/`, `config/`, `playbooks/` | JSON スキーマ、類型別仕様、リスク方針、分岐プレイブック |
-| `docs/` | 審査基準・出力形式・操作手順・知識基盤の仕様書 |
-| `examples/` | サンプル契約書とレビュー例(下記) |
-| `profile/` | 実務プロファイルの**テンプレート**(各自の情報を記入) |
-| `legal_cache/` | 動作確認用の法令キャッシュ(**一次資料ではありません**。実利用では取得スクリプトで更新) |
-| `tests/` | 架空データによるテスト |
+| `scripts/` | Gates, verification, Word revision handling, and knowledge-base scripts. Primarily Python standard library, with third-party dependencies for some functions; run using `python3 -I`. |
+| `agents/`, `skills/` | Agent definitions for independent verification and adversarial review, and review workflow skills. |
+| `schemas/`, `specs/`, `config/`, `playbooks/` | JSON schemas, contract-type specifications, risk policies, and branching playbooks. |
+| `docs/` | Review criteria, output formats, operating instructions, and knowledge-base specifications. |
+| `examples/` | Sample contracts and review outputs described below. |
+| `profile/` | Practice-profile **templates** to complete with your own information. |
+| `legal_cache/` | Legal cache for testing. **Not a primary source**; refresh it using the retrieval scripts for actual use. |
+| `tests/` | Tests using fictional data. |
 
-## サンプル(`examples/`)
-会社名等はすべて架空(株式会社A・株式会社B)です。
-- `contracts/` レビュー対象のサンプル契約書: `01_manufacturing`(金型及び樹脂成形部品製造委託基本契約書)、`02_joint_research`(共同研究開発契約書)、`03_cloud_service`(クラウドサービス利用契約書)
-- `reviews/<契約名>/custom_ai_internal.docx` 本システムによる内部検討用レビュー(変更履歴・コメント付き)
-- `reviews/<契約名>/custom_ai_external.docx` 同・相手方提示用(理由を相手方向けの表現にしたもの)
-- `reviews/02_joint_research/genspark_review.docx` 比較用の他AIによるレビュー例
+Most supporting documentation, comments, and sample contracts are in Japanese. Preserve UTF-8 encoding, including Japanese filenames.
 
-レビュー例は、実際の試験で得た出力から会社名等を匿名化したものです(試験時点の版であり、現行版の出力とは異なる場合があります)。
+## Examples
 
-## 前提(Claude の利用)
-本拡張は Claude(Claude for Legal の Commercial Legal プラグインを含む)上で動かす前提です。Claude の有料プランは、利用者各自で契約してください(本リポジトリには含まれません)。
+All company names in the examples are fictional (Company A and Company B).
 
-## 使い方(概要)
-1. `profile/` のテンプレートを埋め、`scripts/check_config.py` で読込を確認する(未読込のまま一般基準に切り替えない設計)。
-2. 法令の一次資料を取得する(`pc/fetch_legal_sources.py` または `scripts/fetch_egov.py`。e-Gov 法令API)。**キャッシュは必ず一次資料と照合**してから使うこと。
-3. `docs/操作手順書.md` と `docs/review_schema.md` に従って `review.json` を作成し、`review_gate.py` → `blind_packet.py`(独立再検証)→ `compare_judgments.py` → `integrated_gate.py` → `revision_state.py` → `apply_revisions.py` → `validate_docx.py` の順に実行する。
+- `examples/contracts/`: sample contracts for review: `01_manufacturing` (master agreement for mold and plastic molding component manufacturing), `02_joint_research` (joint research and development agreement), and `03_cloud_service` (cloud service agreement).
+- `examples/reviews/<contract>/custom_ai_internal.docx`: internal review produced by this system, with tracked changes and comments.
+- `examples/reviews/<contract>/custom_ai_external.docx`: a version for the counterparty, with explanations phrased for that audience.
+- `examples/reviews/02_joint_research/genspark_review.docx`: a review produced by another AI for comparison.
 
-## 既知の限界
-- 検証が PASS しても、法的な正しさ・実務上の妥当性は証明されません。独立再検証は同一系統のモデルによる確認になり得ます。
-- 一部スクリプトには、類型や契約書の書式への依存による既知の不具合があります(例: レポート生成の `judgment_label` 依存、外部法令条番号の誤検出、既存コメントを含む docx の件数検証)。
-- Word は Microsoft Word 実機での開封確認を前提としていません。
+Review examples were anonymized from outputs obtained during actual testing. They reflect the version used at that time and may differ from the current version's output.
 
-## ライセンス
-MIT License(`LICENSE` 参照)。法令キャッシュ(`legal_cache/`)は一次資料ではなく、無保証です。
+## Prerequisites
+
+This extension is intended for use with Claude, including the Commercial Legal plugin in Claude for Legal. Users must obtain their own paid Claude plan; it is not included in this repository.
+
+Some scripts require third-party Python packages, including `lxml`, `python-docx`, and `reportlab`. The repository does not provide an automated dependency installation setup. The test results below should not be interpreted as a successful validation of this release.
+
+## Workflow overview
+
+1. Complete the templates in `profile/` and check that they load using `scripts/check_config.py`. The design prevents silently falling back to general criteria when the profile has not loaded.
+2. Retrieve primary legal sources through the e-Gov Law API using `pc/fetch_legal_sources.py` or `scripts/fetch_egov.py`. **Always compare cached material with primary sources before use.**
+3. Prepare `review.json` following [`docs/操作手順書.md`](docs/操作手順書.md) and [`docs/review_schema.md`](docs/review_schema.md). Run the workflow in this order:
+
+```text
+review_gate.py → blind_packet.py (independent verification)
+→ compare_judgments.py → integrated_gate.py → revision_state.py
+→ apply_revisions.py → validate_docx.py
+```
+
+## Validation status
+
+During publication preparation, the following suites were attempted using Python 3.10.11 on Windows:
+
+| Suite | Result |
+|---|---|
+| `python3 -I scripts/run_tests.py` | Stopped because `lxml` was unavailable. |
+| `python3 -I scripts/run_v5_tests.py` | Stopped because `lxml` was unavailable. |
+| `python3 -I scripts/run_pipeline_tests.py` | Stopped because `lxml` was unavailable. |
+| `python3 -I tests/kb/run_kb_tests.py` | Reported import-test failures, then stopped because `reportlab` was unavailable. |
+
+No passing test totals were established in that environment. Code was not modified to address these results. The ten example DOCX containers and their XML entries were readable; visual rendering in Microsoft Word has not been verified.
+
+## Known limitations
+
+- A verification result of PASS does not establish legal correctness or suitability for practice. Independent verification may use models from the same model family.
+- Some scripts have known dependencies on contract types or document formatting, including report generation's dependency on `judgment_label`, false detection of article numbers from external statutes, and count validation for DOCX files with existing comments.
+- Opening and displaying the Word files in Microsoft Word on a real device has not been verified.
+
+## License
+
+MIT License; see [LICENSE](LICENSE). The legal cache in `legal_cache/` is not a primary source and comes without warranty.
