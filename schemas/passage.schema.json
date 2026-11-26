@@ -1,0 +1,99 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "passage",
+ "description": "原文及び段落参照。原文・抽出テキスト・OCR・訂正案・AI要約は kind で区別し、混同しない。",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "passage_id",
+  "parent_type",
+  "parent_id",
+  "kind",
+  "text"
+ ],
+ "properties": {
+  "passage_id": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+  },
+  "parent_type": {
+   "enum": [
+    "source",
+    "case"
+   ]
+  },
+  "parent_id": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+  },
+  "page": {
+   "type": [
+    "integer",
+    "string",
+    "null"
+   ]
+  },
+  "paragraph": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "section": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "kind": {
+   "enum": [
+    "original_text",
+    "extracted_text",
+    "ocr",
+    "correction_proposal",
+    "ai_summary"
+   ]
+  },
+  "text": {
+   "type": "string",
+   "minLength": 1
+  },
+  "text_sha256": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "ocr_status": {
+   "enum": [
+    "unchecked",
+    "checked",
+    "correction_pending",
+    "correction_confirmed",
+    "not_applicable"
+   ]
+  },
+  "correction_of": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "note": {
+   "type": [
+    "string",
+    "null"
+   ]
+  }
+ }
+}

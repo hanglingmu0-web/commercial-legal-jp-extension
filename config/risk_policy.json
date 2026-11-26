@@ -1,0 +1,5 @@
+{"_note": "暫定値。社内の基準が未確認のため【要設定】。数値閾値は当社の審査基準ではなく、検証の厚みを決めるための仮の目安。",
+ "high_if": {"categories": ["A", "B"], "numeric_exposure_ratio_of_contract_value": 0.10, "conditional_applicability_with_revision": true},
+ "standard_if": {"numeric_terms_present": true, "any_revision": true},
+ "max_age_days_by_tier": {"light": 30, "standard": 7, "high": 1},
+ "verification_by_tier": {"light": ["gate"], "standard": ["gate", "independent_verifier"], "high": ["gate", "independent_verifier", "adversarial_reviewer"]}}

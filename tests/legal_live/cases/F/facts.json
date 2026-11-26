@@ -1,0 +1,4 @@
+{"reference_date": "2026-11-24", "contract_date": "2026-12-01",
+ "entrustment": {"type": "製造委託", "matches_definition": null},
+ "client": {"form": "法人", "is_state_or_art14_person": false},
+ "contractor": {"form": "法人"}}

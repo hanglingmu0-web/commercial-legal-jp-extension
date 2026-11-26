@@ -1,0 +1,40 @@
+{
+ "source_id": "rule_507M60200000009",
+ "kind": "Rule",
+ "source_type": "一次",
+ "verbatim": true,
+ "law_id": "507M60200000009",
+ "law_num": "令和七年公正取引委員会規則第九号",
+ "law_title": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律第六条第一項及び第二項の率を定める規則",
+ "abbrev": [],
+ "former_titles": [
+  "下請代金支払遅延等防止法第四条の二の規定による遅延利息の率を定める規則"
+ ],
+ "revision_id": "507M60200000009_20260101_000000000000000",
+ "enforcement_date": "2026-01-01",
+ "current_revision_status": "CurrentEnforced",
+ "repeal_status": "None",
+ "repeal_date": null,
+ "api_updated": "2025-10-16T10:04:34+09:00",
+ "retrieved_at": "2026-11-24T12:20:00+09:00",
+ "retrieval_route": "組込みブラウザ get_page_text(e-Gov API v2 law_data応答を貼付転記。括弧1組の転記漏れを補完、title_kana省略)",
+ "transcribed_by_model": true,
+ "cross_checked_by": [
+  "WebFetch(e-Gov API)要約: 年14.6%・施行2026-01-01で一致",
+  "doc1 JFTC/中企庁テキスト chunk191: 年率14.6%"
+ ],
+ "raw_sha256": "98f7e8af3a70fbb52b6b343ded2b0f768160ab8eb2ef066a81be8993bd2c7e64",
+ "transitional_provisions_retrieved": false,
+ "provisions": {
+  "enact": "下請代金支払遅延等防止法及び下請中小企業振興法の一部を改正する法律（令和七年法律第四十一号）の施行に伴い、並びに製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律（昭和三十一年法律第百二十号）第六条第一項及び第二項の規定に基づき、下請代金支払遅延等防止法第四条の二の規定による遅延利息の率を定める規則（昭和三十七年公正取引委員会規則第一号）の全部を改正する規則を次のように定める。",
+  "MP-1": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律第六条第一項及び第二項の公正取引委員会規則で定める率は、年十四・六パーセントとする。",
+  "SP-1": "この規則は、令和八年一月一日から施行する。"
+ },
+ "acquisition": "model_transcription",
+ "promulgation_date": "2025-10-01",
+ "last_verified_at": "2026-11-24T12:20:00+09:00",
+ "scheduled_enforcement_date": null,
+ "amendment_history_retrieved": false,
+ "raw_path": "legal_cache/raw/raw_507M60200000009.json",
+ "test_fixture": false
+}

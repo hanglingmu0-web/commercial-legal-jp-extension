@@ -1,0 +1,131 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "legal_source",
+ "description": "出典資料。確認できない書誌情報は null とし、推測で補完しない。",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "source_id",
+  "title",
+  "doc_type",
+  "bibliographic_status",
+  "version"
+ ],
+ "properties": {
+  "source_id": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+  },
+  "version": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "title": {
+   "type": "string",
+   "minLength": 1
+  },
+  "doc_type": {
+   "enum": [
+    "textbook",
+    "commentary",
+    "practice_book",
+    "paper",
+    "case_commentary",
+    "official_commentary",
+    "other"
+   ]
+  },
+  "authors": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "editors": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "publisher": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "edition": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "published_date": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "identifiers": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "string"
+   }
+  },
+  "original_path": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "ocr_text_path": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "license_terms": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "external_transmission_permitted": {
+   "type": "boolean",
+   "default": false
+  },
+  "sha256": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "ocr_sha256": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "bibliographic_status": {
+   "enum": [
+    "confirmed",
+    "unconfirmed"
+   ]
+  },
+  "notes": {
+   "type": [
+    "string",
+    "null"
+   ]
+  }
+ }
+}

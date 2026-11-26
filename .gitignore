@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+logs/
+output/
+cases/
+import/
+indexes/
+knowledge/
+profile/CLAUDE.md
+profile/company-profile.md
+*.sqlite
+*.sqlite3
+.env

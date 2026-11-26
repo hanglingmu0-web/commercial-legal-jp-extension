@@ -1,0 +1,86 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "link",
+ "description": "資料間の関連付け。AI推定と原資料に明示された引用関係を basis で区別する。",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "link_id",
+  "from_type",
+  "from_id",
+  "relation",
+  "basis"
+ ],
+ "properties": {
+  "link_id": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+  },
+  "from_type": {
+   "enum": [
+    "statute",
+    "knowledge",
+    "case"
+   ]
+  },
+  "from_id": {
+   "type": "string",
+   "minLength": 1
+  },
+  "to_type": {
+   "enum": [
+    "statute",
+    "knowledge",
+    "case",
+    null
+   ]
+  },
+  "to_id": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "unresolved_ref": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "relation": {
+   "enum": [
+    "explains_statute",
+    "cites_statute",
+    "cites_case",
+    "explains_case",
+    "supports_case",
+    "criticizes_case",
+    "shows_different_view",
+    "subsequent_case",
+    "higher_court",
+    "lower_court",
+    "similar_facts",
+    "same_issue",
+    "overrules_case",
+    "adopts_view"
+   ]
+  },
+  "basis": {
+   "enum": [
+    "explicit_in_source",
+    "ai_inferred"
+   ]
+  },
+  "basis_passage_id": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  }
+ }
+}

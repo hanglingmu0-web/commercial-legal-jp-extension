@@ -1,0 +1,11 @@
+{
+ "rule_507M60200000009": {
+  "url": "https://laws.e-gov.go.jp/api/2/law_data/507M60200000009?response_format=json",
+  "retrieved_at": "2026-11-24T12:20:00+09:00",
+  "format": "application/json (e-Gov law_data v2)",
+  "bytes": 3141,
+  "sha256": "98f7e8af3a70fbb52b6b343ded2b0f768160ab8eb2ef066a81be8993bd2c7e64",
+  "acquisition": "model_transcription",
+  "route": "組込みブラウザget_page_textの応答をモデルが貼付転記(機械取得でない・title_kana省略・括弧補完あり)"
+ }
+}

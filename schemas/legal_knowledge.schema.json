@@ -1,0 +1,270 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "legal_knowledge",
+ "description": "法知識。原則・著者見解・学説の争い・裁判所の判断・実務上の留意点を knowledge_type で区別する。",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "knowledge_id",
+  "version",
+  "source_id",
+  "knowledge_type",
+  "authority_class",
+  "legal_field",
+  "issue",
+  "ocr_status",
+  "structure_status"
+ ],
+ "properties": {
+  "knowledge_id": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+  },
+  "version": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "source_id": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+  },
+  "knowledge_type": {
+   "enum": [
+    "legal_principle",
+    "author_view",
+    "scholarly_dispute",
+    "court_holding_as_described",
+    "practice_note"
+   ]
+  },
+  "authority_class": {
+   "enum": [
+    "statute_text",
+    "court_decision",
+    "official_commentary",
+    "scholarly_view",
+    "practice_book",
+    "case_commentary",
+    "internal_standard",
+    "past_case_judgment",
+    "ai_inference"
+   ]
+  },
+  "legal_field": {
+   "type": "string",
+   "minLength": 1
+  },
+  "issue": {
+   "type": "string",
+   "minLength": 1
+  },
+  "sub_issue": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "problem_statement": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "principle": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "requirements": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "effects": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "exceptions": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "interpretation": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "scholarly_position": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "opposing_views": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "practice_notes": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "related_statutes": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "related_articles": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "related_cases": {
+   "type": "array",
+   "items": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+     },
+     {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "ref"
+      ],
+      "properties": {
+       "ref": {
+        "type": "string",
+        "minLength": 1
+       },
+       "resolved": {
+        "type": "boolean"
+       },
+       "id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "related_knowledge": {
+   "type": "array",
+   "items": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+     },
+     {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "ref"
+      ],
+      "properties": {
+       "ref": {
+        "type": "string",
+        "minLength": 1
+       },
+       "resolved": {
+        "type": "boolean"
+       },
+       "id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "source_refs": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "passage_id"
+    ],
+    "properties": {
+     "passage_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+     },
+     "page": {
+      "type": [
+       "integer",
+       "string",
+       "null"
+      ]
+     }
+    }
+   }
+  },
+  "source_pages": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "ocr_status": {
+   "enum": [
+    "unchecked",
+    "checked",
+    "correction_pending",
+    "correction_confirmed"
+   ]
+  },
+  "structure_status": {
+   "enum": [
+    "ai_generated",
+    "human_checked",
+    "rejected"
+   ]
+  },
+  "applicable_period": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "from": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "to": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    }
+   }
+  },
+  "keywords": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  }
+ }
+}

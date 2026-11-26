@@ -1,0 +1,24 @@
+{
+ "source_id": "guide_jftc_text_r7_11",
+ "kind": "Guidance",
+ "source_type": "行政解説",
+ "verbatim": true,
+ "law_title": "中小受託取引適正化法テキスト(公正取引委員会・中小企業庁 令和7年11月)",
+ "law_id": null,
+ "enforcement_date": "2025-11-01",
+ "current_revision_status": "不明",
+ "repeal_status": "None",
+ "repeal_date": null,
+ "retrieved_at": "2026-11-24T12:10:00+09:00",
+ "retrieval_route": "claude-legal-editor MCP search_legal_documents(doc_id=1, chunk 191)の返却本文",
+ "transcribed_by_model": true,
+ "cross_checked_by": [],
+ "transitional_provisions_retrieved": false,
+ "note": "条文ではなく所管行政機関の解説資料。登録時期は令和7年11月(文書表紙)。法令の現行性判定には使えない。",
+ "provisions": {
+  "chunk191": "支払遅延が生じた場合、委託事業者は中小受託事業者に対し、受領後60 日を経過した日から支払をする日までの期間について、その日数に応じ、当該未払金額に年率14.6％（167 ページ、資料４参照）を乗じて得た額を遅延利息として支払う義務がある。"
+ },
+ "acquisition": "service_excerpt",
+ "last_verified_at": "2026-11-24T12:10:00+09:00",
+ "test_fixture": false
+}

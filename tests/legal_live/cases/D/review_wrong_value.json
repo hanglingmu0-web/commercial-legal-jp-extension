@@ -1,0 +1,237 @@
+{
+ "reference_date": "2026-11-24",
+ "facts": {
+  "entrustment": {
+   "type": "製造委託",
+   "matches_definition": true
+  },
+  "client": {
+   "form": "法人",
+   "capital_yen": 50000000,
+   "employees": 120,
+   "is_state_or_art14_person": false
+  },
+  "contractor": {
+   "form": "法人",
+   "capital_yen": 8000000,
+   "employees": 20
+  },
+  "contract_date": "2026-12-01"
+ },
+ "evidence": [
+  {
+   "id": "E1",
+   "source_id": "act_331AC0000000120",
+   "title": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律",
+   "issuer": "e-Gov法令検索",
+   "url": "https://laws.e-gov.go.jp/law/331AC0000000120",
+   "retrieved_at": "2026-11-24T12:15:00+09:00",
+   "source_type": "一次",
+   "verified": true
+  },
+  {
+   "id": "E2",
+   "source_id": "rule_507M60200000009",
+   "title": "令和七年公正取引委員会規則第九号",
+   "issuer": "e-Gov法令検索",
+   "url": "https://laws.e-gov.go.jp/law/507M60200000009",
+   "retrieved_at": "2026-11-24T12:20:00+09:00",
+   "source_type": "一次",
+   "verified": true
+  }
+ ],
+ "risk_tier": "high",
+ "judgments": [
+  {
+   "id": "J1",
+   "category": "G",
+   "category_reason": "試験用",
+   "conclusion_status": "条件付き",
+   "legally_mandatory": false,
+   "statutes": [
+    {
+     "name": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律",
+     "law_number": "昭和三十一年法律第百二十号",
+     "article": "第2条第8項・第9項",
+     "effective_status": "施行済",
+     "reference_date": "2026-11-24",
+     "evidence_ids": [
+      "E1"
+     ],
+     "asserted_applicable": true,
+     "requirements": [
+      {
+       "name": "法令の有効性(基準日)",
+       "status": "充足",
+       "basis": "施行日 2026-01-01 ≤ 基準日(2026-11-24)",
+       "group": "必須"
+      },
+      {
+       "name": "委託内容が製造委託等に該当",
+       "status": "充足",
+       "basis": "申告に基づく(定義該当性自体の法的評価は再検証対象)",
+       "group": "必須"
+      },
+      {
+       "name": "委託事業者が国等/政府契約支払遅延防止法14条の者でない",
+       "status": "充足",
+       "basis": "申告",
+       "group": "必須"
+      },
+      {
+       "name": "資本金基準(第2条第8項・第9項 1〜4号)",
+       "status": "充足",
+       "basis": "委託事業者50,000,000円 > 10,000,000円、受託事業者が個人または資本金10,000,000円以下: 2-8-2",
+       "group": "選択肢"
+      },
+      {
+       "name": "従業員基準(第2条第8項・第9項 5・6号)",
+       "status": "不充足",
+       "basis": "委託事業者従業員120人(>300人が必要)、受託事業者20人(≤300人が必要)",
+       "group": "選択肢"
+      },
+      {
+       "name": "規模要件(資本金基準または従業員基準のいずれか)",
+       "status": "充足",
+       "basis": "資本金基準=True / 従業員基準=False",
+       "group": "必須"
+      },
+      {
+       "name": "みなし委託事業者(第2条第10項:支配関係+再委託)",
+       "status": "該当なし",
+       "basis": "規模要件を満たさない場合に限り検討。親会社等の支配関係と再委託の事実は未確認",
+       "group": "必須"
+      }
+     ]
+    }
+   ],
+   "claims": [
+    {
+     "text": "委託事業者の支払遅延の遅延利息率",
+     "source_id": "rule_507M60200000009",
+     "ref": "MP-1",
+     "quote": "年十四・六パーセントとする",
+     "key_terms": [
+      "年十四・六パーセント"
+     ]
+    }
+   ],
+   "numbers": [
+    {
+     "label": "年率14.0%",
+     "value_percent": 14.0,
+     "kind": "法定率",
+     "basis_ref": {
+      "source_id": "rule_507M60200000009",
+      "ref": "MP-1"
+     },
+     "evidence_ids": [
+      "E2"
+     ]
+    }
+   ]
+  }
+ ],
+ "revisions": [],
+ "our_role": {
+  "label": "委託者"
+ },
+ "term_assessments": [
+  {
+   "judgment_id": "J1",
+   "dimensions": {
+    "legal_validity": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "mandatory_law": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "applicability": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "economic_rationality": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "our_position": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "risk_allocation": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "performability": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "dispute_effectiveness": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "negotiation": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "playbook_alignment": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    }
+   },
+   "revision_decision": "修正不要",
+   "no_revision_reason": "経済的合理性・当社立場を検討した結果、現状の条件で当社に不利益は見当たらない(試験用記載)",
+   "legal_conclusion": ""
+  }
+ ],
+ "numeric_reviews": [
+  {
+   "judgment_id": "J1",
+   "term_label": "年率14.0%",
+   "value_text": "",
+   "burden_on": "当社",
+   "payer": "委託者",
+   "checks": {
+    "n1_legal_regulation": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n2_law_applies": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n3_basis": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n4_beneficiary_burden": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n5_vs_consideration": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n6_vs_expected_loss": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n7_calc_method": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n8_overlap": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "n9_over_under_burden": {
+     "status": "評価済",
+     "text": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    }
+   },
+   "calc_examples": []
+  }
+ ]
+}

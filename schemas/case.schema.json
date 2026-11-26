@@ -1,0 +1,488 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "case",
+ "description": "判例。裁判所の判断・当事者の主張・原審の判断・補足意見・反対意見・評釈・AI要約を別の項目に分け、混同しない。",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "case_id",
+  "version",
+  "court",
+  "decision_date",
+  "case_number",
+  "existence_status",
+  "fulltext_status",
+  "original_verification",
+  "structure_verification"
+ ],
+ "properties": {
+  "case_id": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+  },
+  "version": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "court": {
+   "type": "string",
+   "minLength": 1
+  },
+  "bench": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "decision_date": {
+   "type": "string",
+   "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  },
+  "case_number": {
+   "type": "string",
+   "minLength": 1
+  },
+  "case_name": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "decision_type": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "order_text": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "conclusion": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "legal_field": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "issues": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "key_facts": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "key_fact"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "procedural_history": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "party_arguments": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "party_argument"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "court_reasoning": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "court_reasoning"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "holdings": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "court_holding"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "lower_court_judgments": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "lower_court_judgment"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "supplementary_opinions": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "supplementary_opinion"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "dissenting_opinions": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "dissenting_opinion"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "ai_summaries": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "text"
+    ],
+    "properties": {
+     "kind": {
+      "const": "ai_summary"
+     },
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "passage_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+      }
+     }
+    }
+   }
+  },
+  "cited_statutes": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "cited_cases": {
+   "type": "array",
+   "items": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+     },
+     {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "ref"
+      ],
+      "properties": {
+       "ref": {
+        "type": "string",
+        "minLength": 1
+       },
+       "resolved": {
+        "type": "boolean"
+       },
+       "id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "related_cases": {
+   "type": "array",
+   "items": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+     },
+     {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "ref"
+      ],
+      "properties": {
+       "ref": {
+        "type": "string",
+        "minLength": 1
+       },
+       "resolved": {
+        "type": "boolean"
+       },
+       "id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "subsequent_cases": {
+   "type": "array",
+   "items": {
+    "anyOf": [
+     {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_\\-]{3,64}$"
+     },
+     {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "ref"
+      ],
+      "properties": {
+       "ref": {
+        "type": "string",
+        "minLength": 1
+       },
+       "resolved": {
+        "type": "boolean"
+       },
+       "id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "appeal_relation": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "applicability_conditions": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "distinguishing_facts": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "commentary_refs": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "fulltext_ref": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "path": {
+     "type": "string"
+    },
+    "sha256": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    }
+   }
+  },
+  "official_url": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "retrieved_at": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "original_sha256": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "existence_status": {
+   "enum": [
+    "confirmed",
+    "unconfirmed"
+   ]
+  },
+  "fulltext_status": {
+   "enum": [
+    "available",
+    "unavailable"
+   ]
+  },
+  "original_verification": {
+   "enum": [
+    "verified",
+    "unverified"
+   ]
+  },
+  "structure_verification": {
+   "enum": [
+    "ai_generated",
+    "human_checked"
+   ]
+  }
+ }
+}

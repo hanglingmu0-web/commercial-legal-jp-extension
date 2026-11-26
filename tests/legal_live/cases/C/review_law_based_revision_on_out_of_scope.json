@@ -1,0 +1,182 @@
+{
+ "reference_date": "2026-11-24",
+ "facts": {
+  "entrustment": {
+   "type": "製造委託",
+   "matches_definition": true
+  },
+  "client": {
+   "form": "法人",
+   "capital_yen": 8000000,
+   "employees": 50,
+   "is_state_or_art14_person": false
+  },
+  "contractor": {
+   "form": "法人",
+   "capital_yen": 3000000,
+   "employees": 5
+  },
+  "contract_date": "2026-12-01"
+ },
+ "evidence": [
+  {
+   "id": "E1",
+   "source_id": "act_331AC0000000120",
+   "title": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律",
+   "issuer": "e-Gov法令検索",
+   "url": "https://laws.e-gov.go.jp/law/331AC0000000120",
+   "retrieved_at": "2026-11-24T12:15:00+09:00",
+   "source_type": "一次",
+   "verified": true
+  },
+  {
+   "id": "E2",
+   "source_id": "rule_507M60200000009",
+   "title": "令和七年公正取引委員会規則第九号",
+   "issuer": "e-Gov法令検索",
+   "url": "https://laws.e-gov.go.jp/law/507M60200000009",
+   "retrieved_at": "2026-11-24T12:20:00+09:00",
+   "source_type": "一次",
+   "verified": true
+  }
+ ],
+ "risk_tier": "high",
+ "judgments": [
+  {
+   "id": "J1",
+   "category": "G",
+   "category_reason": "試験用",
+   "conclusion_status": "確定",
+   "legally_mandatory": true,
+   "statutes": [
+    {
+     "name": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律",
+     "law_number": "昭和三十一年法律第百二十号",
+     "article": "第2条第8項・第9項",
+     "effective_status": "施行済",
+     "reference_date": "2026-11-24",
+     "evidence_ids": [
+      "E1"
+     ],
+     "asserted_applicable": true,
+     "requirements": [
+      {
+       "name": "法令の有効性(基準日)",
+       "status": "充足",
+       "basis": "施行日 2026-01-01 ≤ 基準日(2026-11-24)",
+       "group": "必須"
+      },
+      {
+       "name": "委託内容が製造委託等に該当",
+       "status": "充足",
+       "basis": "申告に基づく(定義該当性自体の法的評価は再検証対象)",
+       "group": "必須"
+      },
+      {
+       "name": "委託事業者が国等/政府契約支払遅延防止法14条の者でない",
+       "status": "充足",
+       "basis": "申告",
+       "group": "必須"
+      },
+      {
+       "name": "資本金基準(第2条第8項・第9項 1〜4号)",
+       "status": "不充足",
+       "basis": "委託事業者の資本金が各号の下限(資本金基準)を満たさない",
+       "group": "選択肢"
+      },
+      {
+       "name": "従業員基準(第2条第8項・第9項 5・6号)",
+       "status": "不充足",
+       "basis": "委託事業者従業員50人(>300人が必要)、受託事業者5人(≤300人が必要)",
+       "group": "選択肢"
+      },
+      {
+       "name": "規模要件(資本金基準または従業員基準のいずれか)",
+       "status": "不充足",
+       "basis": "資本金基準=False / 従業員基準=False",
+       "group": "必須"
+      },
+      {
+       "name": "みなし委託事業者(第2条第10項:支配関係+再委託)",
+       "status": "法的解釈未確定",
+       "basis": "規模要件を満たさない場合に限り検討。親会社等の支配関係と再委託の事実は未確認",
+       "group": "必須"
+      }
+     ]
+    }
+   ],
+   "claims": [],
+   "numbers": []
+  }
+ ],
+ "revisions": [
+  {
+   "revision_id": "R1",
+   "reason": "試験",
+   "original_text": "a",
+   "revised_text": "b",
+   "risk_addressed": "下請法規制リスクの解消",
+   "depends_on_statute": true,
+   "apply_to_word": true,
+   "judgment_id": "J1",
+   "verification_status": "検証済",
+   "evidence_ids": [
+    "E1"
+   ]
+  }
+ ],
+ "our_role": {
+  "label": "委託者"
+ },
+ "term_assessments": [
+  {
+   "judgment_id": "J1",
+   "dimensions": {
+    "legal_validity": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "mandatory_law": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "applicability": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "economic_rationality": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "our_position": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "risk_allocation": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "performability": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "dispute_effectiveness": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "negotiation": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    },
+    "playbook_alignment": {
+     "status": "評価済",
+     "assessment": "試験用の評価記述(実質的な内容を含む十分な長さ)。経済的合理性・当社立場・損害見込み等を具体的に検討した旨の記載。"
+    }
+   },
+   "revision_decision": "修正要",
+   "no_revision_reason": "",
+   "legal_conclusion": ""
+  }
+ ],
+ "numeric_reviews": []
+}

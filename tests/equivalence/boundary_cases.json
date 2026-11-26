@@ -1,0 +1,1586 @@
+[
+ {
+  "id": 1,
+  "desc": "2-8-1/2-9-1 委託側3億超(+1), 相手3億ちょうど",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 2,
+  "desc": "2-9-1 相手3億+1(法人)は不該当, 従業員でも不可",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": 1000
+   }
+  }
+ },
+ {
+  "id": 3,
+  "desc": "2-8-1 委託側3億ちょうどは1号不該当; 2号で相手1千万",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 4,
+  "desc": "2-9-2 相手1千万+1, 委託3億ちょうど(2号), 従業員小",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000001,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 5,
+  "desc": "2-8-2 委託側1千万ちょうどは不該当",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 6,
+  "desc": "2-8-2 委託側1千万+1, 相手1千万",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000001,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 7,
+  "desc": "2-8-2/2-9-2 委託1千万+1, 相手1千万+1",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000001,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000001,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 8,
+  "desc": "2-9-1 個人は資本金を問わない(巨大値でも)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 5,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": 1000000000000,
+    "employees": 5
+   }
+  }
+ },
+ {
+  "id": 9,
+  "desc": "2-9-1 個人・資本金/従業員とも不明でも1号経路で確定",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": null
+   }
+  }
+ },
+ {
+  "id": 10,
+  "desc": "委託側1千万・小規模・従業員300以下, 相手従業員不明 -> 全経路不成立",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": null
+   }
+  }
+ },
+ {
+  "id": 11,
+  "desc": "2-8-5 委託側従業員301, 相手300(資本金経路なし)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 50000000,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 12,
+  "desc": "2-8-5 委託側従業員300ちょうどは不該当",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 300,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 50000000,
+    "employees": 100
+   }
+  }
+ },
+ {
+  "id": 13,
+  "desc": "2-9-5 相手301は不該当",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 14,
+  "desc": "2-9-5 個人にも従業員要件(300以下)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 15,
+  "desc": "2-9-5 個人で従業員301は不該当(資本金経路もなし)",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 16,
+  "desc": "2-8-5 相手の従業員不明, 他経路なし",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": null
+   }
+  }
+ },
+ {
+  "id": 17,
+  "desc": "委託側従業員不明, 資本金経路不成立",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": null,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 18,
+  "desc": "1号経路確定なら委託側従業員不明でも適用あり",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": null,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 19,
+  "desc": "委託側資本金不明, 従業員10 -> 1/2号は可能性, 5号は不成立",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 20,
+  "desc": "委託側資本金不明でも5号経路確定(301/300)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 21,
+  "desc": "委託側資本金不明, 相手3億超法人 -> 1,2,5号とも不成立",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 22,
+  "desc": "委託側資本金不明, 相手3億超法人, 委託側従業員小 -> 全不成立",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 23,
+  "desc": "2-8-5括弧書 1号該当者->2-9-1相手(整合)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 50
+   }
+  }
+ },
+ {
+  "id": 24,
+  "desc": "2-8-5括弧書 2号該当者->2-9-2相手 (5号は除外されるが2号で適用)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 400
+   }
+  }
+ },
+ {
+  "id": 25,
+  "desc": "2-8-1 委託5億, 相手2億(法人), 従業員多",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 400
+   }
+  }
+ },
+ {
+  "id": 26,
+  "desc": "2-8-5括弧書が効かない: 2号該当者だが相手は2-9-2非該当(資本金2億,従業員100)-> 5号で適用",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 100
+   }
+  }
+ },
+ {
+  "id": 27,
+  "desc": "2-8-5括弧書が効かない: 1号該当者だが相手は2-9-1非該当(5億)-> 5号で適用",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 100
+   }
+  }
+ },
+ {
+  "id": 28,
+  "desc": "1号: 相手個人(従業員301)でも2-9-1該当で適用",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 29,
+  "desc": "2号: 相手個人(従業員301)でも2-9-2該当で適用",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 30,
+  "desc": "2-8-5括弧書(国・14条の者を除く): 該当者フラグTrue",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": true
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 31,
+  "desc": "14条該当者フラグ不明, 他は適用要件充足",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": null
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 32,
+  "desc": "14条フラグ不明でも資本金・従業員とも小さければ適用なし",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 10,
+    "is_state_or_art14_person": null
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 33,
+  "desc": "委託側が個人 -> 委託事業者になり得ない",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 1000,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 34,
+  "desc": "委託側が個人, 従業員301でも2-8-5は法人たる事業者のみ",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 35,
+  "desc": "委託側形態不明, 資本金5億 -> 個人なら不成立",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": null,
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 36,
+  "desc": "委託側形態不明, 資本金100万,従業員10 -> 個人でも法人でも不成立",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": null,
+    "capital_yen": 1000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 37,
+  "desc": "委託側形態不明, 従業員301/相手100 -> 法人なら5号",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": null,
+    "capital_yen": null,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 100
+   }
+  }
+ },
+ {
+  "id": 38,
+  "desc": "相手形態不明, 資本金3億+1 -> 個人なら1号該当",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": null,
+    "capital_yen": 300000001,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 39,
+  "desc": "相手形態不明, 資本金3億ちょうど -> 個人でも法人でも該当",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": null,
+    "capital_yen": 300000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 40,
+  "desc": "相手形態・資本金とも不明, 委託5億",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": null,
+    "capital_yen": null,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 41,
+  "desc": "相手形態不明, 資本金1千万+1, 委託2億 -> 個人なら該当",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": null,
+    "capital_yen": 10000001,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 42,
+  "desc": "相手形態不明, 資本金1千万, 委託2億 -> 該当",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": null,
+    "capital_yen": 10000000,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 43,
+  "desc": "2-1 製造委託に該当せず",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": false
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 44,
+  "desc": "2-1 該当性不明, 他は充足",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": null
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 45,
+  "desc": "2-1 該当性不明だが法人要件上どの経路も不成立",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": null
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 46,
+  "desc": "施行日前日",
+  "expected": "未施行",
+  "facts": {
+   "reference_date": "2025-12-31",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 47,
+  "desc": "施行日当日",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-01-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 48,
+  "desc": "施行日翌日",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-01-02",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 49,
+  "desc": "施行前で製造委託非該当 -> 未施行を優先(判断)",
+  "expected": "未施行",
+  "facts": {
+   "reference_date": "2025-12-31",
+   "entrustment": {
+    "matches_definition": false
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 50,
+  "desc": "施行前で事実不明 -> 未施行",
+  "expected": "未施行",
+  "facts": {
+   "reference_date": "2025-12-31",
+   "entrustment": {
+    "matches_definition": null
+   },
+   "client": {
+    "form": null,
+    "capital_yen": null,
+    "employees": null,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": null,
+    "capital_yen": null,
+    "employees": null
+   }
+  }
+ },
+ {
+  "id": 51,
+  "desc": "施行前でart14 True -> 未施行",
+  "expected": "未施行",
+  "facts": {
+   "reference_date": "2025-01-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": true
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 52,
+  "desc": "基準日欠落 -> 判断保留(施行前後確定不可)",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": null,
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 53,
+  "desc": "相手個人・従業員不明, 委託側5号のみ可能 -> 保留",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": null
+   }
+  }
+ },
+ {
+  "id": 54,
+  "desc": "1号: 委託5億, 従業員は不問(従業員少)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": 0,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 55,
+  "desc": "2-8-5: 相手資本金は不問(5億でも従業員300)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 56,
+  "desc": "1号: 委託側従業員300でも資本金で該当",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 300,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 57,
+  "desc": "相手資本金0",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 200000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 0,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 58,
+  "desc": "委託側従業員0・5億, 相手資本金0",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 0,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 0,
+    "employees": 0
+   }
+  }
+ },
+ {
+  "id": 59,
+  "desc": "3億ちょうど/従業員301, 相手3億ちょうど/従業員301 -> 全不成立",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 60,
+  "desc": "3億ちょうど/301 (2号該当), 相手3億/300 -> 2-9-2非該当ゆえ5号で適用",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 61,
+  "desc": "1千万+1/301, 相手1千万/301 -> 2号で適用(5号従業員は不成立でも)",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000001,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 62,
+  "desc": "相手法人 資本金不明, 委託5億 -> 保留",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 63,
+  "desc": "相手法人 資本金不明/従業員301, 委託5億/10 -> 保留",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 10,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 301
+   }
+  }
+ },
+ {
+  "id": 64,
+  "desc": "相手法人 資本金不明 従業員300, 委託側301 -> 5号で確定",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": null,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 65,
+  "desc": "全て不明",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": null,
+    "capital_yen": null,
+    "employees": null,
+    "is_state_or_art14_person": null
+   },
+   "contractor": {
+    "form": null,
+    "capital_yen": null,
+    "employees": null
+   }
+  }
+ },
+ {
+  "id": 66,
+  "desc": "14条フラグTrue, 製造委託該当性不明 -> 偽が確定",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": null
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 500000000,
+    "employees": 500,
+    "is_state_or_art14_person": true
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 67,
+  "desc": "14条フラグ不明, 従業員301/100(5号可能性)",
+  "expected": "判断保留",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301,
+    "is_state_or_art14_person": null
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 100
+   }
+  }
+ },
+ {
+  "id": 68,
+  "desc": "国該当True, 従業員301(2-8-5の国除外)",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 5000000,
+    "employees": 301,
+    "is_state_or_art14_person": true
+   },
+   "contractor": {
+    "form": "法人",
+    "capital_yen": 1,
+    "employees": 10
+   }
+  }
+ },
+ {
+  "id": 69,
+  "desc": "1号境界: 委託3億+1 相手個人 従業員300",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000001,
+    "employees": 0,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 70,
+  "desc": "2号境界: 委託3億 相手個人",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 300000000,
+    "employees": 0,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": null
+   }
+  }
+ },
+ {
+  "id": 71,
+  "desc": "委託側資本金1千万ちょうど/従業員301, 相手個人 従業員300 -> 5号",
+  "expected": "適用あり",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 301,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 300
+   }
+  }
+ },
+ {
+  "id": 72,
+  "desc": "委託側資本金1千万ちょうど/従業員300, 相手個人 -> 全不成立",
+  "expected": "適用なし",
+  "facts": {
+   "reference_date": "2026-06-01",
+   "entrustment": {
+    "matches_definition": true
+   },
+   "client": {
+    "form": "法人",
+    "capital_yen": 10000000,
+    "employees": 300,
+    "is_state_or_art14_person": false
+   },
+   "contractor": {
+    "form": "個人",
+    "capital_yen": null,
+    "employees": 1
+   }
+  }
+ }
+]

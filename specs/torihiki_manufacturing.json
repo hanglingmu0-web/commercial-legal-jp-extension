@@ -1,0 +1,107 @@
+{
+ "law": "取適法(製造委託)【仕様駆動エンジン用・applicability.py との同値性試験の対象】",
+ "tree": {
+  "all": [
+   {
+    "fact": "entrustment.matches_definition",
+    "op": "eq",
+    "value": true,
+    "name": "製造委託等に該当"
+   },
+   {
+    "fact": "client.is_state_or_art14_person",
+    "op": "eq",
+    "value": false,
+    "name": "委託事業者が国等でない"
+   },
+   {
+    "fact": "client.form",
+    "op": "eq",
+    "value": "法人",
+    "name": "委託事業者が法人"
+   },
+   {
+    "any": [
+     {
+      "all": [
+       {
+        "fact": "client.capital_yen",
+        "op": "gt",
+        "value": 300000000,
+        "name": "委託事業者資本金>3億"
+       },
+       {
+        "any": [
+         {
+          "fact": "contractor.capital_yen",
+          "op": "lte",
+          "value": 300000000,
+          "name": "受託事業者資本金<=3億"
+         },
+         {
+          "fact": "contractor.form",
+          "op": "eq",
+          "value": "個人"
+         }
+        ]
+       }
+      ],
+      "name": "資本金区分(3億円)"
+     },
+     {
+      "all": [
+       {
+        "fact": "client.capital_yen",
+        "op": "gt",
+        "value": 10000000,
+        "name": "委託事業者資本金>1000万"
+       },
+       {
+        "fact": "client.capital_yen",
+        "op": "lte",
+        "value": 300000000
+       },
+       {
+        "any": [
+         {
+          "fact": "contractor.capital_yen",
+          "op": "lte",
+          "value": 10000000,
+          "name": "受託事業者資本金<=1000万"
+         },
+         {
+          "fact": "contractor.form",
+          "op": "eq",
+          "value": "個人"
+         }
+        ]
+       }
+      ],
+      "name": "資本金区分(1000万円)"
+     },
+     {
+      "all": [
+       {
+        "fact": "client.employees",
+        "op": "gt",
+        "value": 300,
+        "name": "委託事業者従業員>300"
+       },
+       {
+        "fact": "contractor.employees",
+        "op": "lte",
+        "value": 300,
+        "name": "受託事業者従業員<=300"
+       }
+      ],
+      "name": "従業員区分(300人)"
+     }
+    ],
+    "name": "資本金又は従業員数の基準(選択肢)"
+   }
+  ],
+  "name": "取適法の適用(製造委託・簡易仕様)"
+ },
+ "_note": "製造委託のみの簡易仕様。従業員100人基準は情報成果物/役務(政令指定外)のみで製造委託には適用されないため含めない(同値性試験で判明した仕様誤りを修正済み)",
+ "effective_from": "2026-01-01"
+}

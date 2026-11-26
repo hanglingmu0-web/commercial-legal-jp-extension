@@ -1,0 +1,118 @@
+{
+ "reference_date": "2026-11-24",
+ "facts": {
+  "reference_date": "2026-11-24",
+  "contract_date": "2026-12-01",
+  "entrustment": {
+   "type": "製造委託",
+   "matches_definition": null
+  },
+  "client": {
+   "form": "法人",
+   "is_state_or_art14_person": false
+  },
+  "contractor": {
+   "form": "法人"
+  }
+ },
+ "evidence": [
+  {
+   "id": "E1",
+   "title": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律",
+   "issuer": "e-Gov法令検索",
+   "url": "https://laws.e-gov.go.jp/law/331AC0000000120",
+   "retrieved_at": "2026-11-24",
+   "source_type": "一次",
+   "verified": true,
+   "source_id": "act_331AC0000000120"
+  }
+ ],
+ "judgments": [
+  {
+   "id": "J1",
+   "clause": "第1条",
+   "category": "A",
+   "category_reason": "取適法の適用可否に関わる条項(委託内容・取引条件の特定)",
+   "conclusion_status": "判断保留",
+   "summary": "製造委託の定義該当性(null)・資本金/従業員数(不明)により取適法の適用は未確定。契約書に代金・支払期日・検収等の記載がなく別紙仕様書・個別契約での補完有無も不明。法適用を前提とした修正は不可。経過措置は未取得だが契約日2026-12-01は施行日後。",
+   "statutes": [
+    {
+     "name": "製造委託等に係る中小受託事業者に対する代金の支払の遅延等の防止に関する法律",
+     "law_number": "昭和三十一年法律第百二十号",
+     "article": "第2条第1項・第8項・第9項",
+     "effective_status": "施行済",
+     "reference_date": "2026-11-24",
+     "evidence_ids": [
+      "E1"
+     ],
+     "asserted_applicable": false,
+     "requirements": [
+      {
+       "name": "法令の有効性(基準日)",
+       "status": "充足",
+       "basis": "施行日2026-01-01<=基準日",
+       "group": "必須"
+      },
+      {
+       "name": "委託内容が製造委託等に該当",
+       "status": "事実関係不明",
+       "basis": "matches_definitionがnull",
+       "group": "必須"
+      },
+      {
+       "name": "規模要件(資本金基準または従業員基準のいずれか)",
+       "status": "事実関係不明",
+       "basis": "資本金・従業員数が不明",
+       "group": "必須"
+      }
+     ]
+    }
+   ],
+   "revision_needed": false,
+   "revisions": [],
+   "revision_note": "現時点で修正の必要性は明確でない。事実確認(定義該当性・資本金・従業員数・代金等の別紙記載有無)後に再判断"
+  },
+  {
+   "id": "J2",
+   "clause": "第2条",
+   "category": "B",
+   "category_reason": "一般的な双務の秘密保持条項",
+   "conclusion_status": "条件付き",
+   "summary": "双務で書面承諾を要件とする標準的内容。例外(法令開示・既知情報等)や期間・返還条項がない点は実務上の改善余地だが、法令・事実上の問題は確認できず修正の必要性は明確でない。",
+   "statutes": [],
+   "revision_needed": false,
+   "revisions": []
+  },
+  {
+   "id": "J3",
+   "clause": "第3条",
+   "category": "B",
+   "category_reason": "合意管轄条項",
+   "conclusion_status": "条件付き",
+   "summary": "東京地裁の専属的合意管轄は民事訴訟法11条上有効で、甲に有利または中立。乙所在地は不明で、著しい不便の主張可能性は事実関係不明。修正不要。",
+   "statutes": [],
+   "revision_needed": false,
+   "revisions": []
+  },
+  {
+   "id": "J4",
+   "clause": "第4条",
+   "category": "C",
+   "category_reason": "遅延損害金/違約金の数値条項",
+   "conclusion_status": "条件付き",
+   "summary": "年率36.5%相当(日0.1%)は委託側の遅延利息14.6%(取適法第6条、委託側の支払遅延に関する率)とは別の、乙の納期遅延に対する任意設定の損害賠償額予定(民法420条)であり法定率ではない。甲に有利で修正の必要性は明確でない。過大性が争われ一部無効となる可能性、取適法適用時の関連規制は適用未確定のため判断保留。",
+   "statutes": [],
+   "revision_needed": false,
+   "revisions": [],
+   "numbers": [
+    {
+     "label": "遅延違約金日0.1%(年率36.5%相当)",
+     "kind": "任意設定",
+     "value_percent": 0.1,
+     "negotiation_basis": "当事者間の合意による損害賠償額の予定。法定率ではなく、経済的合理性・過大性は取引額・想定損害に照らし要別途確認"
+    }
+   ]
+  }
+ ],
+ "revisions": []
+}
