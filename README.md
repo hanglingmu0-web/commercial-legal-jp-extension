@@ -46,7 +46,7 @@ Review examples were anonymized from outputs obtained during actual testing. The
 
 This extension is intended for use with Claude, including the Commercial Legal plugin in Claude for Legal. Users must obtain their own paid Claude plan; it is not included in this repository.
 
-Some scripts require third-party Python packages, including `lxml`, `python-docx`, and `reportlab`. The repository does not provide an automated dependency installation setup. The test results below should not be interpreted as a successful validation of this release.
+Some scripts require third-party Python packages, including `lxml`, `python-docx`, and `reportlab`; knowledge-base schema validation also uses `jsonschema`. The repository does not provide an automated dependency installation setup. Test outcomes are specific to the runtime environment, as described below.
 
 ## Workflow overview
 
@@ -62,16 +62,35 @@ review_gate.py → blind_packet.py (independent verification)
 
 ## Validation status
 
-During publication preparation, the following suites were attempted using Python 3.10.11 on Windows:
+### Author's environment
 
-| Suite | Result |
+The author reports that the following suites passed in the author's environment, described by the author as a standard-library-only environment:
+
+| Suite | Author-reported result |
 |---|---|
-| `python3 -I scripts/run_tests.py` | Stopped because `lxml` was unavailable. |
-| `python3 -I scripts/run_v5_tests.py` | Stopped because `lxml` was unavailable. |
-| `python3 -I scripts/run_pipeline_tests.py` | Stopped because `lxml` was unavailable. |
-| `python3 -I tests/kb/run_kb_tests.py` | Reported import-test failures, then stopped because `reportlab` was unavailable. |
+| `python3 -I scripts/run_tests.py` | **46/46 passed** |
+| `python3 -I scripts/run_v5_tests.py` | **31/31 passed** |
+| `python3 -I scripts/run_pipeline_tests.py` | **37/37 passed** |
+| `python3 -I tests/kb/run_kb_tests.py` | **80/80 passed** |
 
-No passing test totals were established in that environment. Code was not modified to address these results. The ten example DOCX containers and their XML entries were readable; visual rendering in Microsoft Word has not been verified.
+These are results from the author's environment. Available packages and runtime configuration are environment-specific; the dependency requirements above describe imports used by the supplied scripts.
+
+### Codex environments
+
+During initial publication preparation on Windows with Python 3.10.11, the first three suites stopped because `lxml` was unavailable. The knowledge-base suite reported import-test failures and then stopped because `reportlab` was unavailable. Those runs did not establish passing totals in that Codex environment.
+
+A later review in a separate Codex Windows environment with Python 3.12 and additional dependencies produced the following results:
+
+| Suite | Codex review result |
+|---|---|
+| `scripts/run_tests.py` | 45/45 automated checks passed; one manual persistence check remained unperformed. |
+| `scripts/run_v5_tests.py` | 30/31 passed; the nested v4 suite reported failures. |
+| `scripts/run_pipeline_tests.py` | Stopped with a Windows CP932 decoding error. |
+| `tests/kb/run_kb_tests.py` | Stopped with an SQLite database-open error. |
+
+The author-reported results and the Codex results above are separate, environment-specific observations. These Codex runs do not replace the author's passing results. Code was not modified for these runs. Passing these suites checks implemented behavior and does not establish legal accuracy or cover every edge case.
+
+The ten example DOCX containers and their XML entries were readable; visual rendering in Microsoft Word has not been verified by Codex.
 
 ## Known limitations
 

@@ -49,21 +49,40 @@ Commercial Legal 本体は改変せず、後段で「法的判断の検証」と
 ## ライセンス
 MIT License(`LICENSE` 参照)。法令キャッシュ(`legal_cache/`)は一次資料ではなく、無保証です。
 
-## 公開準備時の検証状況（英語版の補足に対応）
+## 環境ごとの検証結果
 
 [English](README.md)
 
 関連文書・コメント・サンプル契約の多くは日本語です。日本語ファイル名を含め、UTF-8を維持してください。
 
-一部のスクリプトには `lxml`、`python-docx`、`reportlab` 等が必要です。依存パッケージの自動インストール設定は含まれていません。
+一部のスクリプトには `lxml`、`python-docx`、`reportlab` が必要です。知識基盤のスキーマ検証では `jsonschema` も使用します。依存パッケージの自動インストール設定は含まれていません。
 
-Windows / Python 3.10.11で以下の試験を実行しましたが、合格件数は確認できていません。これらの結果に対するコード修正は行っていません。
+### 著者環境での合格実績
 
-| 試験 | 結果 |
+著者から、標準ライブラリのみの環境で以下の試験が合格したとの報告があります。
+
+| 試験 | 著者環境での結果 |
 |---|---|
-| `python3 -I scripts/run_tests.py` | `lxml` 不足で停止 |
-| `python3 -I scripts/run_v5_tests.py` | `lxml` 不足で停止 |
-| `python3 -I scripts/run_pipeline_tests.py` | `lxml` 不足で停止 |
-| `python3 -I tests/kb/run_kb_tests.py` | 取込試験に失敗があり、その後 `reportlab` 不足で停止 |
+| `python3 -I scripts/run_tests.py` | **46/46 合格** |
+| `python3 -I scripts/run_v5_tests.py` | **31/31 合格** |
+| `python3 -I scripts/run_pipeline_tests.py` | **37/37 合格** |
+| `python3 -I tests/kb/run_kb_tests.py` | **80/80 合格** |
 
-サンプルDOCX 10件はコンテナーと内部XMLの読み取りを確認しました。Microsoft Wordでの表示は未確認です。
+これらは著者環境での結果です。利用可能なパッケージや実行設定は環境によって異なり、上記の依存関係は提供スクリプト内で使用するインポートを示しています。
+
+### Codex環境での再実行結果
+
+公開準備時のWindows / Python 3.10.11環境では、最初の3試験は `lxml` 不足で停止しました。知識基盤試験は取込試験の失敗後に `reportlab` 不足で停止し、このCodex環境では合格件数を確認できませんでした。
+
+その後、別のCodex Windows / Python 3.12環境に追加の依存ライブラリを用意して確認した結果は以下のとおりです。
+
+| 試験 | Codexでの確認結果 |
+|---|---|
+| `scripts/run_tests.py` | 自動試験45/45合格。手動の永続化確認1件は未実施 |
+| `scripts/run_v5_tests.py` | 30/31合格。内部で呼び出すv4試験に失敗あり |
+| `scripts/run_pipeline_tests.py` | WindowsのCP932文字コードによる読み取りエラーで停止 |
+| `tests/kb/run_kb_tests.py` | SQLiteデータベースを開く際のエラーで停止 |
+
+著者環境の合格実績とCodex環境の結果は、それぞれの環境で得られた別個の結果です。Codex側の結果が著者環境の合格実績を置き換えるものではありません。試験のためのコード変更は行っていません。試験合格は実装された検査の動作確認であり、法的正確性やすべての例外条件を保証するものではありません。
+
+サンプルDOCX 10件はコンテナーと内部XMLの読み取りを確認しました。CodexによるMicrosoft Wordでの表示確認は未実施です。
